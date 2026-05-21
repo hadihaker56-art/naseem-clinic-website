@@ -6,6 +6,7 @@
     <title>عيادات النسيم السنية التجميلية - دمشق</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 <body>
     <!-- Navigation -->
@@ -20,7 +21,9 @@
                 <li><a href="#about">عننا</a></li>
                 <li><a href="#services">الخدمات</a></li>
                 <li><a href="#prices">الأسعار</a></li>
-                <li><a href="#gallery">الأعمال</a></li>
+                <li><a href="#booking">احجز موعد</a></li>
+                <li><a href="#faq">أسئلة شائعة</a></li>
+                <li><a href="#blog">نصائح</a></li>
                 <li><a href="#contact">التواصل</a></li>
             </ul>
         </div>
@@ -31,7 +34,7 @@
         <div class="hero-content">
             <h1>ابتسامة الثقة تبدأ من هنا</h1>
             <p>جمالك المتكامل في مكان واحد</p>
-            <button class="cta-btn" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">احجز استشارتك المجانية</button>
+            <button class="cta-btn" onclick="document.getElementById('booking').scrollIntoView({behavior: 'smooth'})">احجز استشارتك المجانية</button>
         </div>
     </section>
 
@@ -118,6 +121,50 @@
         </div>
     </section>
 
+    <!-- Booking Section -->
+    <section id="booking" class="booking">
+        <div class="container">
+            <h2>احجز موعدك الآن</h2>
+            <p class="section-subtitle">اختر الخدمة والموعد المناسب لك</p>
+            <form class="booking-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="booking-name">الاسم الكامل</label>
+                        <input type="text" id="booking-name" placeholder="أدخل اسمك" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="booking-phone">رقم الهاتف</label>
+                        <input type="tel" id="booking-phone" placeholder="+966..." required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="booking-service">الخدمة المطلوبة</label>
+                        <select id="booking-service" required>
+                            <option value="">اختر الخدمة</option>
+                            <option value="تبييض الأسنان">تبييض الأسنان</option>
+                            <option value="قشور خزفية">قشور خزفية</option>
+                            <option value="بوتوكس">بوتوكس</option>
+                            <option value="فيلر">فيلر</option>
+                            <option value="ميزوثيرابي">ميزوثيرابي</option>
+                            <option value="تقشير">تقشير</option>
+                            <option value="استشارة">استشارة مجانية</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="booking-date">التاريخ المفضل</label>
+                        <input type="date" id="booking-date" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="booking-message">ملاحظات إضافية</label>
+                    <textarea id="booking-message" rows="3" placeholder="أي ملاحظات أو استفسارات..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn booking-submit">تأكيد الحجز</button>
+            </form>
+        </div>
+    </section>
+
     <!-- Gallery Section -->
     <section id="gallery" class="gallery">
         <div class="container">
@@ -178,6 +225,7 @@
                     </div>
                     <p>"تجربة رائعة جداً! الفريق محترف جداً والنتائج أفضل من توقعاتي. أنصح الجميع بزيارة العيادة."</p>
                     <h4>- فاطمة م.</h4>
+                    <span class="rating">⭐ 5/5</span>
                 </div>
                 <div class="testimonial-card">
                     <div class="stars">
@@ -189,6 +237,7 @@
                     </div>
                     <p>"الدكتور والفريق الطبي متميزون جداً. الجودة والاحترافية واضحة في كل شيء. شكراً لكم!"</p>
                     <h4>- محمد ع.</h4>
+                    <span class="rating">⭐ 5/5</span>
                 </div>
                 <div class="testimonial-card">
                     <div class="stars">
@@ -200,8 +249,166 @@
                     </div>
                     <p>"أفضل عيادة زرتها! النظافة والتعقيم على أعلى مستوى. النتائج طبيعية وجميلة جداً."</p>
                     <h4>- ليلى س.</h4>
+                    <span class="rating">⭐ 5/5</span>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <h2>الأسئلة الشائعة</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>هل الخدمات آمنة تماماً؟</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>نعم، جميع خدماتنا آمنة تماماً. نستخدم مواد معتمدة دولياً وأجهزة حديثة. الفريق الطبي لديه خبرة عالية وشهادات متخصصة.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>كم تستغرق جلسة التبييض؟</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>جلسة التبييض الاحترافية تستغرق حوالي 30-60 دقيقة حسب حالة الأسنان. النتائج تظهر فوراً وتستمر لعدة أشهر.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>هل هناك آثار جانبية للبوتوكس؟</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>البوتوكس آمن جداً عند تطبيقه من قبل متخصص. قد تظهر احمرار طفيف يزول خلال ساعات. النتائج تظهر بعد 3-7 أيام.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>هل يمكن الحجز عبر الإنترنت؟</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>نعم، يمكنك الحجز عبر نموذج الحجز في الموقع أو التواصل معنا عبر الواتساب أو الهاتف. سنؤكد موعدك في أسرع وقت.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>هل هناك استشارة مجانية؟</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>نعم، نقدم استشارة مجانية أولية لتقييم احتياجاتك وشرح الخيارات المتاحة. لا توجد التزامات.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>ما هي ساعات العمل؟</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>ساعات عملنا يومياً من الساعة 10 صباحاً إلى 8 مساءً. نعمل طوال أيام الأسبوع. يمكنك الاتصال بنا للحجز في أي وقت.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="blog">
+        <div class="container">
+            <h2>نصائح وخبرات طبية</h2>
+            <p class="section-subtitle">معلومات مفيدة لصحة أسنانك وجمال بشرتك</p>
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <i class="fas fa-tooth"></i>
+                    </div>
+                    <h3>5 نصائح لأسنان بيضاء وصحية</h3>
+                    <p>تعرف على أفضل الطرق للحفاظ على بياض أسنانك وصحتها. من العادات اليومية إلى العلاجات الاحترافية.</p>
+                    <div class="blog-meta">
+                        <span class="blog-date">21 مايو 2026</span>
+                        <span class="blog-category">صحة الأسنان</span>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h3>البوتوكس والفيلر: الفرق والفوائد</h3>
+                    <p>شرح مفصل عن الفرق بين البوتوكس والفيلر وكيفية استخدام كل منهما للحصول على أفضل النتائج.</p>
+                    <div class="blog-meta">
+                        <span class="blog-date">20 مايو 2026</span>
+                        <span class="blog-category">تجميل الوجه</span>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <i class="fas fa-face-smile"></i>
+                    </div>
+                    <h3>العناية بالبشرة بعد التقشير</h3>
+                    <p>نصائح مهمة للعناية بالبشرة بعد إجراء التقشير الكيميائي أو الليزري للحصول على أفضل النتائج.</p>
+                    <div class="blog-meta">
+                        <span class="blog-date">19 مايو 2026</span>
+                        <span class="blog-category">العناية بالبشرة</span>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <i class="fas fa-wand-magic-sparkles"></i>
+                    </div>
+                    <h3>الميزوثيرابي: العلاج الثوري للبشرة</h3>
+                    <p>تعرف على فوائد الميزوثيرابي وكيف يمكنها تحسين صحة بشرتك وإشراقتها بشكل طبيعي.</p>
+                    <div class="blog-meta">
+                        <span class="blog-date">18 مايو 2026</span>
+                        <span class="blog-category">تجميل</span>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>روتين يومي لبشرة صحية</h3>
+                    <p>برنامج يومي بسيط وفعال للعناية ببشرتك في المنزل. خطوات سهلة للحصول على بشرة مشرقة.</p>
+                    <div class="blog-meta">
+                        <span class="blog-date">17 مايو 2026</span>
+                        <span class="blog-category">العناية</span>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3>ابتسامة هوليوود: كل ما تريد معرفته</h3>
+                    <p>دليل شامل عن إجراء ابتسامة هوليوود، المميزات، والنتائج المتوقعة، والعناية بعد الإجراء.</p>
+                    <div class="blog-meta">
+                        <span class="blog-date">16 مايو 2026</span>
+                        <span class="blog-category">تجميل الأسنان</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section id="map" class="map-section">
+        <div class="container">
+            <h2>موقعنا على الخريطة</h2>
+            <div id="map" class="map-container"></div>
         </div>
     </section>
 
@@ -273,5 +480,8 @@
         <p>&copy; 2026 عيادات النسيم السنية التجميلية. جميع الحقوق محفوظة.</p>
         <p>تصميم احترافي | جودة عالية | خدمة متميزة</p>
     </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
