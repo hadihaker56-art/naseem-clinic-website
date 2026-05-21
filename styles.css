@@ -225,6 +225,85 @@ body {
     line-height: 1.6;
 }
 
+/* Prices Section */
+.prices {
+    padding: 80px 20px;
+    background: white;
+}
+
+.prices h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--primary-color);
+}
+
+.prices-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.prices-image {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.prices-info h3 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.prices-info p {
+    color: var(--light-text);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.prices-list {
+    list-style: none;
+    margin-bottom: 2rem;
+}
+
+.prices-list li {
+    padding: 0.8rem 0;
+    padding-right: 1.5rem;
+    border-right: 3px solid var(--secondary-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.prices-list strong {
+    color: var(--primary-color);
+}
+
+.cta-text {
+    font-size: 1rem;
+    color: var(--light-text);
+    margin: 1.5rem 0;
+}
+
+.whatsapp-btn-small {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #25D366;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-btn-small:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+}
+
 /* Gallery Section */
 .gallery {
     padding: 80px 20px;
